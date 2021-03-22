@@ -9,6 +9,7 @@ defmodule AzureTextToSpeech.Application do
     children = [
       # Starts a worker by calling: AzureTextToSpeech.Worker.start_link(arg)
       # {AzureTextToSpeech.Worker, arg}
+      AzureTextToSpeech.AccessTokenAgent
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
