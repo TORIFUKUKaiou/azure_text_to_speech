@@ -22,3 +22,5 @@ erl_crash.dump
 # Ignore package tarball (built via "mix hex.build").
 azure_text_to_speech-*.tar
 
+# Temporary files for e.g. tests.
+/tmp/
