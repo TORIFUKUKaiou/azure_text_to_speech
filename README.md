@@ -1,11 +1,11 @@
 # AzureTextToSpeech
 
-**TODO: Add description**
+Elixir wrapper for [Azure Text to Speech API](https://azure.microsoft.com/en-us/services/cognitive-services/text-to-speech/), a web service to converts text to lifelike speech.
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `azure_text_to_speech` to your list of dependencies in `mix.exs`:
+The package can be installed by adding `:azure_text_to_speech` to your list of
+dependencies in `mix.exs`:
 
 ```elixir
 def deps do
@@ -15,7 +15,8 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/azure_text_to_speech](https://hexdocs.pm/azure_text_to_speech).
+## Copyright and License
 
+Copyright (c) 2021 Torifuku Kaiou
+
+Released under the MIT License, which can be found in the repository in [`LICENSE`](https://github.com/TORIFUKUKaiou/azure_text_to_speech/blob/master/LICENSE).

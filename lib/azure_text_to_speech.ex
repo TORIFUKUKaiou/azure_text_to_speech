@@ -3,19 +3,6 @@ defmodule AzureTextToSpeech do
   Documentation for `AzureTextToSpeech`.
   """
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> AzureTextToSpeech.hello()
-      :world
-
-  """
-  def hello do
-    :world
-  end
-
   @region Application.get_env(:azure_text_to_speech, :region)
   @subscription_key Application.get_env(:azure_text_to_speech, :subscription_key)
   @audio_list ~w(
