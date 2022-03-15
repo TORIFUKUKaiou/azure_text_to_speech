@@ -10,8 +10,8 @@ defmodule AzureTextToSpeech.AccessTokenAgent do
   @spec get :: map()
   def get, do: Agent.get(__MODULE__, & &1)
 
-  @spec update(bitstring()) :: :ok
-  def update(token) when is_bitstring(token) do
+  @spec update(binary()) :: :ok
+  def update(token) when is_binary(token) do
     Agent.update(__MODULE__, fn _ ->
       %{token: token, time: DateTime.now!("Etc/UTC")}
     end)
