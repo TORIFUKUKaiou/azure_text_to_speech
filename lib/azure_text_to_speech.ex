@@ -31,7 +31,7 @@ defmodule AzureTextToSpeech do
   end
 
   @spec ssml(binary(), map()) :: binary()
-  def ssml(text, %{"Name" => name, "Locale" => locale, "Gender" => gender} = voice)
+  def ssml(text, %{"Name" => name, "Locale" => locale, "Gender" => gender})
       when is_binary(text) do
     """
     <speak version='1.0' xml:lang='#{locale}'>
@@ -50,7 +50,7 @@ defmodule AzureTextToSpeech do
 
   @spec to_speech_of_neural_voice(binary(), binary()) :: binary()
   def to_speech_of_neural_voice(ssml, audio \\ "riff-24khz-16bit-mono-pcm")
-      when is_bitstring(ssml) and is_bitstring(audio) do
+      when is_binary(ssml) and is_binary(audio) do
     standard_and_neural_voice_endpoint()
     |> HTTPoison.post!(ssml, headers(audio))
     |> Map.get(:body)

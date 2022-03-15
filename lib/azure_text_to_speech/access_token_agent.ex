@@ -2,7 +2,7 @@ defmodule AzureTextToSpeech.AccessTokenAgent do
   @moduledoc false
   use Agent
 
-  @spec start_link(any) :: {:error, any} | {:ok, pid}
+  @spec start_link(any) :: Agent.on_start()
   def start_link(_initial_value) do
     Agent.start_link(fn -> %{token: nil, time: DateTime.from_unix!(0)} end, name: __MODULE__)
   end
