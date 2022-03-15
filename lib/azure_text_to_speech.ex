@@ -17,6 +17,7 @@ defmodule AzureTextToSpeech do
     audio-48khz-96kbitrate-mono-mp3     audio-48khz-192kbitrate-mono-mp3)
   @user_agent "awesome"
 
+  @spec voices_list :: map()
   def voices_list do
     voices_list_endpoint()
     |> HTTPoison.get!(authorization_header(access_token()))
@@ -24,11 +25,14 @@ defmodule AzureTextToSpeech do
     |> Jason.decode!()
   end
 
+  @spec audio_list :: [binary(), ...]
   def audio_list do
     @audio_list
   end
 
-  def ssml(text, %{"Name" => name, "Locale" => locale, "Gender" => gender}) do
+  @spec ssml(binary(), map()) :: binary()
+  def ssml(text, %{"Name" => name, "Locale" => locale, "Gender" => gender})
+      when is_binary(text) do
     """
     <speak version='1.0' xml:lang='#{locale}'>
       <voice xml:lang='#{locale}' xml:gender='#{gender}' name='#{name}'>
@@ -38,20 +42,26 @@ defmodule AzureTextToSpeech do
     """
   end
 
-  def to_speech_of_standard_voice(ssml, audio \\ "riff-24khz-16bit-mono-pcm") do
+  @spec to_speech_of_standard_voice(binary(), binary()) :: binary()
+  def to_speech_of_standard_voice(ssml, audio \\ "riff-24khz-16bit-mono-pcm")
+      when is_binary(ssml) and is_binary(audio) do
     to_speech_of_neural_voice(ssml, audio)
   end
 
-  def to_speech_of_neural_voice(ssml, audio \\ "riff-24khz-16bit-mono-pcm") do
+  @spec to_speech_of_neural_voice(binary(), binary()) :: binary()
+  def to_speech_of_neural_voice(ssml, audio \\ "riff-24khz-16bit-mono-pcm")
+      when is_binary(ssml) and is_binary(audio) do
     standard_and_neural_voice_endpoint()
     |> HTTPoison.post!(ssml, headers(audio))
     |> Map.get(:body)
   end
 
+  @spec to_speech_of_custom_voice :: nil
   def to_speech_of_custom_voice do
     # TODO
   end
 
+  @spec to_speech_of_long_audio :: nil
   def to_speech_of_long_audio do
     # TODO
   end
